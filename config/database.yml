@@ -6,10 +6,12 @@ default: &default
   pool: 2
   host: <%= ENV['SOUTHWEST_CHECKIN_DATABASE_HOST'] %>
   port: 3306
+  username: sw_checkin
+  password: <%= ENV['SOUTHWEST_CHECKIN_DATABASE_PASSWORD'] %>
 
 development:
   <<: *default
-  database: southwest-checkin_development
+  database: sw_checkin_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -43,7 +45,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: southwest-checkin_test
+  database: sw_checkin_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -66,6 +68,4 @@ test:
 #
 production:
   <<: *default
-  database: southwest_checkin_production
-  username: <%= ENV['SOUTHWEST_CHECKIN_DATABASE_USER'] %>
-  password: <%= ENV['SOUTHWEST_CHECKIN_DATABASE_PASSWORD'] %>
+  database: sw_checkin_production
